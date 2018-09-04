@@ -1,0 +1,73 @@
+.details{
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+.left{
+  align-self: flex-start;
+}
+.right{
+  width:500px;
+  /*box-shadow: 1px 1px 4px gray;*/
+  margin:20px;
+  display:flex;
+  flex-direction: column;
+}
+mat-list-item{
+  background-color:rgba(0,0,0,0.2);
+  margin:10px;
+  border-radius: 10px;
+  width:230px;
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
+  /*align-items: stretch;*/
+}
+.icons{
+  flex:1 1 0;
+}
+
+.standardForm{
+  width:100%;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:space-around;
+}
+.firstInput{
+  width:95%;
+  font-size:20px;
+}
+.half-width{
+  width:45%;
+}
+mat-card,mat-card-content{
+  width:100%;
+  display:flex;
+  flex-direction: column;
+}
+.guide-section{
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+mat-checkbox{
+  width:16%;
+}
+.feedback{
+  font-size:15px;
+  color:tomato;
+}
+.btn-primary{
+  background-color: lawngreen;
+  color:black;
+  font-size:18px;
+  width:66px;
+  height:25px;
+  text-align: center;
+}
+.example-chip-list {
+  width: 100%;
+  margin-top:2%;
+}

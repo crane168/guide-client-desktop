@@ -1,0 +1,29 @@
+<div>
+  <table class="table">
+    <caption>{{user.titleName}}</caption>
+    <thead>
+    <tr>
+      <th>home</th>
+      <th>city</th>
+      <th>work</th>
+      <th>education</th>
+      <th>birthday</th>
+      <th>sex</th>
+      <th>identityCard</th>
+      <th>dateForCar</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>{{ user.home }}</td>
+      <td>{{ user.city }}</td>
+      <td>{{ user.work }}</td>
+      <td>{{ user.education }}</td>
+      <td>{{ user.birthday }}</td>
+      <td>{{ user.sex }}</td>
+      <td>{{ user.identityCard }}</td>
+      <td>{{ user.dateForCar | date:longDate}}</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

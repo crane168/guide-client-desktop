@@ -1,0 +1,49 @@
+<div>
+  <div class="hot">
+    <h1 class="hot-title">热门</h1>
+    <ul class="hot-list">
+      <li class="list js-list" *ngFor="let item of hotTopic" guideClientAnim [style.background]= '"url("+item.imgurl + ")"' >
+        <div class="ceng"
+            >
+          <p class="chinese">{{item.chinese}}</p>
+          <p>{{item.english}}</p>
+        </div>
+        <div class="circle" [ngStyle]="{visibility:'hidden'}"
+        >
+          <p><a routerLink="/details"> + </a></p>
+          <p>{{item.chinese}}</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="try">
+    <h1 class="hot-title">体验</h1>
+    <ul class="try-list">
+      <li class="list js-list" *ngFor="let item of experience" guideClientAnim [style.background]= '"url("+item.imgurl + ")"'>
+        <div class="ceng">
+          <p class="chinese">{{item.chinese}}</p>
+          <p>{{item.english}}</p>
+        </div>
+        <div class="circle" [ngStyle]="{visibility:'hidden'}">
+          <p><a routerLink="/details"> + </a></p>
+          <p>{{item.chinese}}</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <div class="route">
+    <h1 class="hot-title">线路</h1>
+    <ul class="route-list">
+      <li class="list js-list" *ngFor="let item of route" guideClientAnim [style.background]= '"url("+item.imgurl + ")"'>
+        <div class="ceng">
+          <p class="chinese">{{item.chinese}}</p>
+          <p>{{item.english}}</p>
+        </div>
+        <div class="circle" [ngStyle]="{visibility:'hidden'}">
+          <p><a routerLink="/details">+</a></p>
+          <p>{{item.english}}</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>

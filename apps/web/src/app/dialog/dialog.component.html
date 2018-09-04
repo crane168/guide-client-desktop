@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>Hi,<span>{{data.titleName}}</span></h1>
+<div mat-dialog-content>
+  <p>数据提交成功！</p>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">关闭</button>
+  <button mat-button [mat-dialog-close]="" cdkFocusInitial (click)="toHome()">跳转首页</button>
+</div>
