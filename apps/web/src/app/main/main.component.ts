@@ -54,14 +54,14 @@ export class MainComponent implements OnInit {
   constructor(private http: HttpClient) {}
 
   ngOnInit() {
-    this.http.get('../../assets/data.json').subscribe((res: any) => {
+    this.http.get('./assets/data.json').subscribe((res: any) => {
       console.log(res);
       this.hotTopic = res.hotTopic;
     });
-    this.http.get('../../assets/data.json').subscribe((res: any) => {
+    this.http.get('./assets/data.json').subscribe((res: any) => {
       this.experience = res.experience;
     });
-    this.http.get('../../assets/data.json').subscribe((res: any) => {
+    this.http.get('./assets/data.json').subscribe((res: any) => {
       this.route = res.route;
     });
     // fs.readFile("../../assets/data.json","utf8",(err,data)=>{
