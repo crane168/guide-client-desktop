@@ -1,0 +1,43 @@
+table{
+  font-family: verdana,arial,sans-serif;
+       font-size:11px;
+       color:#333333;
+       border-width: 1px;
+       border-color: #666666;
+      border-collapse: collapse;
+}
+table th{
+  border-width: 1px;
+     padding: 8px;
+      border-style: solid;
+       border-color: #666666;
+       background-color: #dedede;
+}
+table th td{
+  border-width: 1px;
+       padding: 8px;
+       border-style: solid;
+       border-color: #666666;
+      background-color: #ffffff;
+}
+mat-list{
+  box-shadow: 2px 2px 2px skyblue;
+}
+mat-icon{
+  margin-right:30px;
+}
+h1{
+  font-size:22px!important;
+}
+button{
+  display: inline;
+  padding-left: 10px;
+}
+mat-list-item{
+  margin-bottom:15px!important;
+
+}
+mat-list-item>span:nth-child(2){
+  color:green;
+}
+

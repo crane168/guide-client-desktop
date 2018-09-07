@@ -1,0 +1,10 @@
+<mat-nav-list>
+
+  <h1 mat-list-item>Hi,<span>{{data.titleName}}</span></h1>
+  <div mat-list-item>
+    <p>数据提交成功！</p>
+  </div>
+  <mat-nav-list mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">关闭</button>
+    <button mat-button  cdkFocusInitial (click)="toHome()">跳转首页</button>
+  </mat-nav-list>

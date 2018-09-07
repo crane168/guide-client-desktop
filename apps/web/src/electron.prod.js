@@ -12,6 +12,7 @@ const createWindow = () => {
     width: 800,
     height: 600,
     icon: path.join(__dirname, 'favicon.ico'),
+    frame:false
   });
 //  open devTools
   win.webContents.openDevTools();

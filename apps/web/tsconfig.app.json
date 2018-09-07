@@ -11,8 +11,5 @@
   ],
   "include": [
     "**/*.ts"
-  ],
-  "types":[
-    "node"
   ]
 }

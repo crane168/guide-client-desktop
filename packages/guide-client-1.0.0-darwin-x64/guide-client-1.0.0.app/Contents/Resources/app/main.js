@@ -1,31 +1,31 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["main"],{
 
-/***/ "../../libs/guidelib/src/component/common/header.component.css":
-/*!*****************************************************************************************************!*\
-  !*** /Users/jingtong1/Desktop/guide-client/libs/guidelib/src/component/common/header.component.css ***!
-  \*****************************************************************************************************/
+/***/ "../../libs/guidelib/src/component/common/header.component.html":
+/*!**************************************************************************************************************!*\
+  !*** /Users/jingtong1/Desktop/guide-client-desktop/libs/guidelib/src/component/common/header.component.html ***!
+  \**************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ".introduce{\n  display:flex;\n  flex-direction: column;\n  background-image: url(\"/assets/banner.jpg\");\n}\n.information{\n  display:flex;\n  flex-direction:row;\n}\n.title{\n  display:flex;\n  flex-direction: row;\n  justify-content: left;\n}\n.title h2{\n  -ms-grid-row-align: center;\n      align-self: center;\n}\n.title h1,.title h2{\n   margin:20px;\n }\n.information img{\n   margin:20px;\n}\n"
+module.exports = "<div class=\"introduce\" [style.background]=\"'url(./assets/banner.jpg)'\">\n  <div class=\"title\">\n    <h1 >发布服务</h1>\n    <h2 class=\"title-tishi\">报价模式提示</h2>\n  </div>\n  <div class=\"information\">\n    <img class=\"deng\" src=\"{{imgurl}}\">\n    <div >\n      <p class=\"p-one\">如果您发布的形成能够以每人每天为单位预定，选择每人每天的报价模式</p>\n      <p>如果您发布的行程是按人头为单位预定，选择按人头报价的报价模式</p>\n    </div>\n  </div>\n\n</div>\n"
 
 /***/ }),
 
-/***/ "../../libs/guidelib/src/component/common/header.component.html":
-/*!******************************************************************************************************!*\
-  !*** /Users/jingtong1/Desktop/guide-client/libs/guidelib/src/component/common/header.component.html ***!
-  \******************************************************************************************************/
+/***/ "../../libs/guidelib/src/component/common/header.component.scss":
+/*!**************************************************************************************************************!*\
+  !*** /Users/jingtong1/Desktop/guide-client-desktop/libs/guidelib/src/component/common/header.component.scss ***!
+  \**************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"introduce\">\n  <div class=\"title\">\n    <h1 >发布服务</h1>\n    <h2 class=\"title-tishi\">报价模式提示</h2>\n  </div>\n  <div class=\"information\">\n    <img class=\"deng\" src=\"{{imgurl}}\">\n    <div >\n      <p class=\"p-one\">如果您发布的形成能够以每人每天为单位预定，选择每人每天的报价模式</p>\n      <p>如果您发布的行程是按人头为单位预定，选择按人头报价的报价模式</p>\n    </div>\n  </div>\n\n</div>\n"
+module.exports = ".introduce {\n  display: flex;\n  flex-direction: column; }\n\n.information {\n  display: flex;\n  flex-direction: row; }\n\n.title {\n  display: flex;\n  flex-direction: row;\n  justify-content: left; }\n\n.title h2 {\n  -ms-grid-row-align: center;\n      align-self: center; }\n\n.title h1, .title h2 {\n  margin: 20px; }\n\n.information img {\n  margin: 20px; }\n"
 
 /***/ }),
 
 /***/ "../../libs/guidelib/src/component/common/header.component.ts":
-/*!****************************************************************************************************!*\
-  !*** /Users/jingtong1/Desktop/guide-client/libs/guidelib/src/component/common/header.component.ts ***!
-  \****************************************************************************************************/
+/*!************************************************************************************************************!*\
+  !*** /Users/jingtong1/Desktop/guide-client-desktop/libs/guidelib/src/component/common/header.component.ts ***!
+  \************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -44,7 +44,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__(/*! @angular/core */ "../../node_modules/@angular/core/fesm5/core.js");
 var HeaderComponent = /** @class */ (function () {
     function HeaderComponent() {
-        this.imgurl = "/assets/dengpao.png";
+        this.imgurl = "./assets/dengpao.png";
     }
     HeaderComponent.prototype.ngOnInit = function () {
     };
@@ -52,7 +52,7 @@ var HeaderComponent = /** @class */ (function () {
         core_1.Component({
             selector: 'guide-client-header',
             template: __webpack_require__(/*! ./header.component.html */ "../../libs/guidelib/src/component/common/header.component.html"),
-            styles: [__webpack_require__(/*! ./header.component.css */ "../../libs/guidelib/src/component/common/header.component.css")]
+            styles: [__webpack_require__(/*! ./header.component.scss */ "../../libs/guidelib/src/component/common/header.component.scss")]
         }),
         __metadata("design:paramtypes", [])
     ], HeaderComponent);
@@ -64,9 +64,9 @@ exports.HeaderComponent = HeaderComponent;
 /***/ }),
 
 /***/ "../../libs/guidelib/src/component/guide-common.module.ts":
-/*!************************************************************************************************!*\
-  !*** /Users/jingtong1/Desktop/guide-client/libs/guidelib/src/component/guide-common.module.ts ***!
-  \************************************************************************************************/
+/*!********************************************************************************************************!*\
+  !*** /Users/jingtong1/Desktop/guide-client-desktop/libs/guidelib/src/component/guide-common.module.ts ***!
+  \********************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -109,9 +109,9 @@ exports.GuideCommonModule = GuideCommonModule;
 /***/ }),
 
 /***/ "../../libs/guidelib/src/index.ts":
-/*!************************************************************************!*\
-  !*** /Users/jingtong1/Desktop/guide-client/libs/guidelib/src/index.ts ***!
-  \************************************************************************/
+/*!********************************************************************************!*\
+  !*** /Users/jingtong1/Desktop/guide-client-desktop/libs/guidelib/src/index.ts ***!
+  \********************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -654,7 +654,7 @@ module.exports = ".list{\n  width:346px;\n  height:130px;\n  /*background:url(\"
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n  <div class=\"hot\">\n    <h1 class=\"hot-title\">热门</h1>\n    <ul class=\"hot-list\">\n      <li class=\"list js-list\" *ngFor=\"let item of hotTopic\" guideClientAnim [style.background]= '\"url(\"+item.imgurl + \")\"' >\n        <div class=\"ceng\"\n            >\n          <p class=\"chinese\">{{item.chinese}}</p>\n          <p>{{item.english}}</p>\n        </div>\n        <div class=\"circle\" [ngStyle]=\"{visibility:'hidden'}\"\n        >\n          <p><a routerLink=\"/details\"> + </a></p>\n          <p>{{item.chinese}}</p>\n        </div>\n      </li>\n    </ul>\n  </div>\n  <div class=\"try\">\n    <h1 class=\"hot-title\">体验</h1>\n    <ul class=\"try-list\">\n      <li class=\"list js-list\" *ngFor=\"let item of experience\" guideClientAnim [style.background]= '\"url(\"+item.imgurl + \")\"'>\n        <div class=\"ceng\">\n          <p class=\"chinese\">{{item.chinese}}</p>\n          <p>{{item.english}}</p>\n        </div>\n        <div class=\"circle\" [ngStyle]=\"{visibility:'hidden'}\">\n          <p><a routerLink=\"/details\"> + </a></p>\n          <p>{{item.chinese}}</p>\n        </div>\n      </li>\n    </ul>\n  </div>\n  <div class=\"route\">\n    <h1 class=\"hot-title\">线路</h1>\n    <ul class=\"route-list\">\n      <li class=\"list js-list\" *ngFor=\"let item of route\" guideClientAnim [style.background]= '\"url(\"+item.imgurl + \")\"'>\n        <div class=\"ceng\">\n          <p class=\"chinese\">{{item.chinese}}</p>\n          <p>{{item.english}}</p>\n        </div>\n        <div class=\"circle\" [ngStyle]=\"{visibility:'hidden'}\">\n          <p><a routerLink=\"/details\">+</a></p>\n          <p>{{item.english}}</p>\n        </div>\n      </li>\n    </ul>\n  </div>\n</div>\n"
+module.exports = "<div>\n  <div class=\"hot\">\n    <h1 class=\"hot-title\">热门</h1>\n    <ul class=\"hot-list\">\n      <li class=\"list js-list\" *ngFor=\"let item of hotTopic\" guideClientAnim [style.background]= '\"url(\"+\".\"+item.imgurl + \")\"' >\n        <div class=\"ceng\"\n            >\n          <p class=\"chinese\">{{item.chinese}}</p>\n          <p>{{item.english}}</p>\n        </div>\n        <div class=\"circle\" [ngStyle]=\"{visibility:'hidden'}\"\n        >\n          <p><a routerLink=\"/details\"> + </a></p>\n          <p>{{item.chinese}}</p>\n        </div>\n      </li>\n    </ul>\n  </div>\n  <div class=\"try\">\n    <h1 class=\"hot-title\">体验</h1>\n    <ul class=\"try-list\">\n      <li class=\"list js-list\" *ngFor=\"let item of experience\" guideClientAnim [style.background]= '\"url(\"+\".\"+item.imgurl + \")\"'>\n        <div class=\"ceng\">\n          <p class=\"chinese\">{{item.chinese}}</p>\n          <p>{{item.english}}</p>\n        </div>\n        <div class=\"circle\" [ngStyle]=\"{visibility:'hidden'}\">\n          <p><a routerLink=\"/details\"> + </a></p>\n          <p>{{item.chinese}}</p>\n        </div>\n      </li>\n    </ul>\n  </div>\n  <div class=\"route\">\n    <h1 class=\"hot-title\">线路</h1>\n    <ul class=\"route-list\">\n      <li class=\"list js-list\" *ngFor=\"let item of route\" guideClientAnim [style.background]= '\"url(\"+\".\"+item.imgurl + \")\"'>\n        <div class=\"ceng\">\n          <p class=\"chinese\">{{item.chinese}}</p>\n          <p>{{item.english}}</p>\n        </div>\n        <div class=\"circle\" [ngStyle]=\"{visibility:'hidden'}\">\n          <p><a routerLink=\"/details\">+</a></p>\n          <p>{{item.english}}</p>\n        </div>\n      </li>\n    </ul>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -688,14 +688,14 @@ var MainComponent = /** @class */ (function () {
     }
     MainComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.http.get('../../assets/data.json').subscribe(function (res) {
+        this.http.get('./assets/data.json').subscribe(function (res) {
             console.log(res);
             _this.hotTopic = res.hotTopic;
         });
-        this.http.get('../../assets/data.json').subscribe(function (res) {
+        this.http.get('./assets/data.json').subscribe(function (res) {
             _this.experience = res.experience;
         });
-        this.http.get('../../assets/data.json').subscribe(function (res) {
+        this.http.get('./assets/data.json').subscribe(function (res) {
             _this.route = res.route;
         });
         // fs.readFile("../../assets/data.json","utf8",(err,data)=>{
@@ -844,7 +844,7 @@ platform_browser_dynamic_1.platformBrowserDynamic()
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/jingtong1/Desktop/guide-client/apps/web/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /Users/jingtong1/Desktop/guide-client-desktop/apps/web/src/main.ts */"./src/main.ts");
 
 
 /***/ })

@@ -1,0 +1,19 @@
+<div class="container">
+  <p><b>{{user.titleName}}</b><button mat-button color="primary" (click)="openBottomSheet()">修改信息</button></p>
+  <mat-list-item>
+    <span>出生地:</span><span>{{user.home}}</span>
+    <mat-divider></mat-divider>
+  </mat-list-item>
+  <mat-list-item>
+    <span>城市:</span><span>{{user.city}}</span>
+    <mat-divider></mat-divider>
+  </mat-list-item>
+  <mat-list-item>
+    <span>职业:</span><span>{{user.work}}</span>
+    <mat-divider></mat-divider>
+  </mat-list-item>
+  <mat-list-item>
+    <span>学历:</span><span>{{user.education}}</span>
+    <mat-divider></mat-divider>
+  </mat-list-item>
+</div>
