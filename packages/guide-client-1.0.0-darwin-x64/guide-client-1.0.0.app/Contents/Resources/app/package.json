@@ -1,8 +1,0 @@
-{
-  "name":"guide-client-web",
-  "productName":"Guide-Client-Web",
-  "version":"1.0.0",
-  "description": "an item for angular6+electron",
-  "main":"electron.prod.js",
-  "license": "MIT"
-}
