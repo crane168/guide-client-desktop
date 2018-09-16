@@ -1,11 +1,15 @@
-const { app, BrowserWindow } = require('electron');
+const {
+  app,
+  BrowserWindow,
+  ipcMain
+} = require('electron');
 const path = require('path');
 const url = require('url');
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let win;
-
+let newWin;
 const createWindow = () => {
   // set timeout to render the window not until the Angular
   // compiler is ready to show the project
@@ -17,12 +21,13 @@ const createWindow = () => {
       icon: './apps/web/src/favicon.icns',
       webPreferences: {
         nodeIntegration: false // turn it on to use node features
-      }
+      },
+      titleBarStyle: 'hidden'
     });
 
     // and load the app.
     win.loadURL(url.format({
-      pathname: 'localhost:4200',
+      pathname: 'localhost:4222',
       protocol: 'http:',
       slashes: true
     }));
@@ -38,7 +43,23 @@ const createWindow = () => {
     });
   }, 10000);
 }
-
+// ipcMain.on('add', () => {
+//   newWin = new BrowserWindow({
+//     width: 600,
+//     height: 400,
+//     frame: false,
+//     parent: win
+//   })
+//   // win = null;
+//   newWin.loadURL(url.format({
+//     pathname: 'localhost:4222',
+//     protocol: 'http:',
+//     slashes: true
+//   }))
+//   newWin.on('closed', () => {
+//     newWin = null;
+//   })
+// })
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.

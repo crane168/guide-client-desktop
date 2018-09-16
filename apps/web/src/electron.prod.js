@@ -1,7 +1,10 @@
-const { app, BrowserWindow } = require('electron');
+const {
+  app,
+  BrowserWindow,
+  ipcMain
+} = require('electron');
 const path = require('path');
 const url = require('url');
-
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let win;
@@ -12,11 +15,18 @@ const createWindow = () => {
     width: 800,
     height: 600,
     icon: path.join(__dirname, 'favicon.ico'),
-    frame:false
+    titleBarStyle: 'hidden',
+    center: true,
+    resizable: true,
+    // titleBarStyle: 'hiddenInset'
+    // titleBarStyle: 'customButtonsOnHover',
+    // transparent: true,
+    // frame: false
   });
-//  open devTools
-  win.webContents.openDevTools();
+  //  open devTools
+  // win.webContents.openDevTools();
   // and load the index.html of the app.
+
   win.loadURL(url.format({
     pathname: path.join(__dirname, 'index.html'),
     protocol: 'file:',
@@ -32,7 +42,29 @@ const createWindow = () => {
     win = null;
   });
 }
+//ipcMain进程
+// ipcMain.on('alert', () => {
+//   newWin = new BrowserWindow({
+//     width: 600,
+//     height: 400,
+//     // frame: false,
+//     // parent: win,
+//     // modal: true
+//   })
+//   // win = null;
+//   newWin.loadURL("http://github.com")
+//   // newWin.on('closed', () => {
+//   //   newWin = null;
+//   // })
+// })
+ipcMain.on('alert', () => {
+  let child = new BrowserWindow({
+    width: 600,
+    height: 400,
+  })
+  child.loadURL('https://github.com')
 
+})
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.

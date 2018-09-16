@@ -4,16 +4,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { DetailsComponent } from './details/details.web.component';
 import { MainComponent } from './main/main.web.component';
 
-const routes:Routes=[
-  {path:'', component:MainComponent},
-  {path:'details',component:DetailsComponent}
-]
+const routes: Routes = [
+  { path: '', component: MainComponent },
+  { path: 'details', component: DetailsComponent }
+];
 @NgModule({
-  imports:[
-    RouterModule.forRoot(routes),
-    CommonModule
-    ],
-    exports:[RouterModule],
+  imports: [RouterModule.forRoot(routes, { useHash: true }), CommonModule],
+  exports: [RouterModule],
   declarations: []
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

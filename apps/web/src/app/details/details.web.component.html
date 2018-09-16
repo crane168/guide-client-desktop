@@ -18,31 +18,31 @@
         <mat-error class="feedback"> 至少输入5个字符 </mat-error>
       </mat-form-field>
       <mat-form-field class="half-width">
-        <input matInput placeholder="出生地"  formControlName="home">
+        <input matInput placeholder="出生地" formControlName="home">
         <mat-error class="feedback"> 至少输入2个字符 </mat-error>
       </mat-form-field>
       <mat-form-field class="half-width">
-        <input matInput placeholder="目前居住城市"  formControlName="city">
+        <input matInput placeholder="目前居住城市" formControlName="city">
         <mat-error class="feedback"> 至少输入2个字符 </mat-error>
       </mat-form-field>
       <mat-form-field class="half-width">
-        <input matInput placeholder="目前职业"  formControlName="work">
+        <input matInput placeholder="目前职业" formControlName="work">
       </mat-form-field>
       <mat-form-field class="half-width">
-        <input matInput placeholder="最高学历"  formControlName="education">
+        <input matInput placeholder="最高学历" formControlName="education">
       </mat-form-field>
       <mat-form-field class="half-width">
-        <input matInput placeholder="出生年月日"  formControlName="birthday">
+        <input matInput placeholder="出生年月日" formControlName="birthday">
         <mat-error class="feedback"> 填写格式必须为1990/0410 </mat-error>
       </mat-form-field>
       <mat-form-field class="half-width">
-        <mat-select  placeholder="sex" formControlName="sex">
+        <mat-select placeholder="sex" formControlName="sex">
           <mat-option value="男">男</mat-option>
           <mat-option value="女">女</mat-option>
         </mat-select>
       </mat-form-field>
       <mat-form-field class="half-width">
-        <input matInput placeholder="身份类型"  formControlName="identityCard">
+        <input matInput placeholder="身份类型" formControlName="identityCard">
       </mat-form-field>
       <mat-form-field class="half-width">
         <input matInput [matDatepicker]="picker" placeholder="开车时间" formControlName="dateForCar">
@@ -75,23 +75,22 @@
       </mat-card>
       <mat-form-field class="example-chip-list">
         <mat-chip-list #chipList>
-          <mat-chip *ngFor="let trip of trips" [selectable]="selectable"
-                    [removable]="removable" (removed)="remove(trip)">
+          <mat-chip *ngFor="let trip of trips" [selectable]="selectable" [removable]="removable" (removed)="remove(trip)">
             {{trip.name}}
             <mat-icon matChipRemove *ngIf="removable">home</mat-icon>
           </mat-chip>
-          <input placeholder="请添加旅游标签"
-                 [matChipInputFor]="chipList"
-                 [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-                 [matChipInputAddOnBlur]="addOnBlur"
-                 (matChipInputTokenEnd)="add($event)">
+          <input placeholder="请添加旅游标签" [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+            [matChipInputAddOnBlur]="addOnBlur" (matChipInputTokenEnd)="add($event)">
         </mat-chip-list>
       </mat-form-field>
       <!--<p><button mat-raised-button  type="submit" [disabled]="registerForm.invalid" (click)="openDialog()"> submit</button></p>-->
-      <p><button mat-raised-button mat-button type="submit"  (click)="openBottomSheet()"> 资料提交</button></p>
+      <p>
+        <button type="button" (click)="sendWindow()" mat-button>打开新窗口</button>
+        <button mat-raised-button mat-button type="submit" (click)="openBottomSheet()"> 资料提交</button>
+      </p>
     </form>
   </div>
   <div class="primary-container">
-    <guide-client-table [user]="user" ></guide-client-table>
+    <guide-client-table [user]="user"></guide-client-table>
   </div>
 </div>

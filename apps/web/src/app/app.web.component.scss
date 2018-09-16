@@ -2,8 +2,28 @@ mat-sidenav {
   width: 100px;
   text-align: center;
 }
-.cbl{
-  position:fixed;
-  top:5%;
-  right:5%;
+
+.cbl {
+  position: fixed;
+  top: 5%;
+  right: 5%;
+}
+
+.title-panpel {
+  height: 30px;
+  background: purple;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  z-index: 999;
+  -webkit-app-region: drag;
+}
+
+.drawer-panpel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: grey;
+  -webkit-app-region: drag;
 }
