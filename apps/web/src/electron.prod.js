@@ -24,7 +24,7 @@ const createWindow = () => {
     // frame: false
   });
   //  open devTools
-  // win.webContents.openDevTools();
+  win.webContents.openDevTools();
   // and load the index.html of the app.
 
   win.loadURL(url.format({

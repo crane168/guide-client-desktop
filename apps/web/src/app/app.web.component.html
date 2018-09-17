@@ -4,8 +4,8 @@
     <p><a routerLink="/details"><button mat-button (click)="sidenav.toggle()">详细信息</button></a></p>
   </mat-sidenav>
   <mat-sidenav-content>
-     <p><button mat-button (click)="sidenav.toggle()" class="cbl">切换侧栏</button></p> 
-    <guide-client-header></guide-client-header> 
+     <p><button mat-button (click)="sidenav.toggle()" class="cbl">切换侧栏</button></p>
+    <guide-client-header></guide-client-header>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>  -->
@@ -19,6 +19,8 @@
     <div class="title-panpel"></div>
     <!-- <p><button mat-button (click)="sidenav.toggle()" class="cbl">切换侧栏</button></p> -->
     <!-- <guide-client-header></guide-client-header> -->
-    <router-outlet style="-webkit-app-region: no-drag;"></router-outlet>
+    <div class="scrollT">
+      <router-outlet ></router-outlet>
+    </div>
   </mat-drawer-content>
 </mat-drawer-container>

@@ -6,3 +6,10 @@
 /*必须引入全局CSS样式*/
 @import "@angular/material/prebuilt-themes/indigo-pink.css";
 //@import url('https://unpkg.com/bootstrap@3.3.7/dist/css/bootstrap.min.css');
+body{
+  // -ms-overflow-style: scrollbar;
+  // overflow-y:hidden;
+  /*定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸*/
+ overflow:auto;
+}
+
