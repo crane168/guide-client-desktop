@@ -193,7 +193,7 @@ export class DetailsComponent implements OnInit {
   // }
   public sendWindow() {
     if (this._electronService.isElectronApp) {
-      this._electronService.ipcRenderer.sendSync('alert');
+      this._electronService.ipcRenderer.send('alert');
       // let win = new BrowserWindow({
       //   width: 800,
       //   height: 600,

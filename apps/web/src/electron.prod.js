@@ -1,7 +1,8 @@
 const {
   app,
   BrowserWindow,
-  ipcMain
+  ipcMain,
+  globalShortcut
 } = require('electron');
 const path = require('path');
 const url = require('url');
@@ -14,10 +15,14 @@ const createWindow = () => {
   win = new BrowserWindow({
     width: 800,
     height: 600,
+    maxwidth:1200,
+    maxheight:1000,
+    resizable:true,
     icon: path.join(__dirname, 'favicon.ico'),
     titleBarStyle: 'hidden',
     center: true,
-    resizable: true,
+    useContentSize :true,
+    show: false
     // titleBarStyle: 'hiddenInset'
     // titleBarStyle: 'customButtonsOnHover',
     // transparent: true,
@@ -32,7 +37,7 @@ const createWindow = () => {
     protocol: 'file:',
     slashes: true
   }));
-
+   win.show()
 
   // Emitted when the window is closed.
   win.on('closed', () => {
@@ -61,14 +66,29 @@ ipcMain.on('alert', () => {
   let child = new BrowserWindow({
     width: 600,
     height: 400,
+    parent: win,
+    modal: true,
+    show: false
   })
   child.loadURL('https://github.com')
-
+  child.once('ready-to-show', () => {
+    child.show()
+  })
+})
+ipcMain.on('max',()=>{
+  win.maximize();
+  win.show();
 })
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', createWindow);
+app.on('ready',()=>{
+    createWindow();
+    globalShortcut.register('CommandOrControl+Shift+N', () => {
+      createWindow();
+    })
+  }
+);
 
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
