@@ -1,8 +1,36 @@
 {
-  "name":"guide-client-web",
-  "productName":"Guide-Client-Web",
-  "version":"1.0.0",
-  "description": "an item for angular6+electron",
-  "main":"electron.prod.js",
-  "license": "MIT"
+  "build": {
+  "productName": "guide-client",
+  "appId": "guide-client",
+  "directories": {
+    "output": "builder"
+  },
+  "scripts":{
+    "builder:osx":"electron-builder -m"
+  },
+  "dmg": {
+    "contents": [
+      {
+        "x": 410,
+        "y": 150,
+        "type": "link",
+        "path": "/Applications"
+      },
+      {
+        "x": 130,
+        "y": 150,
+        "type": "file"
+      }
+    ]
+  },
+  "mac": {
+    "icon": "../../../favicon.icns"
+  },
+  "win": {
+    "icon": "../../../favicon..ico"
+  },
+  "linux": {
+    "icon": "../../../favicon.png"
+  }
+}
 }

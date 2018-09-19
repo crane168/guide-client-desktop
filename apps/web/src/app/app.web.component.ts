@@ -26,7 +26,11 @@ export class AppComponent implements OnInit{
  bigger(){
   if (this._electronService.isElectronApp) {
     this._electronService.ipcRenderer.send('max');
-
+  }
+ }
+ closedSon(){
+  if (this._electronService.isElectronApp) {
+    this._electronService.ipcRenderer.send('clS');
   }
  }
 }

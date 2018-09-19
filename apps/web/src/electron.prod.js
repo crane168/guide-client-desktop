@@ -9,7 +9,7 @@ const url = require('url');
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let win;
-
+let child;
 const createWindow = () => {
   // Create the browser window.
   win = new BrowserWindow({
@@ -29,7 +29,7 @@ const createWindow = () => {
     // frame: false
   });
   //  open devTools
-  win.webContents.openDevTools();
+  // win.webContents.openDevTools();
   // and load the index.html of the app.
 
   win.loadURL(url.format({
@@ -63,15 +63,19 @@ const createWindow = () => {
 //   // })
 // })
 ipcMain.on('alert', () => {
-  let child = new BrowserWindow({
+   child = new BrowserWindow({
     width: 600,
     height: 400,
     parent: win,
     modal: true,
     show: false
   })
-  child.loadURL('https://github.com')
-  child.once('ready-to-show', () => {
+  child.loadURL(url.format({
+    pathname:"localhost:4222/detail",
+    protocol:"http:",
+    slashes:true
+  }))
+  child.on('ready-to-show', () => {
     child.show()
   })
 })
@@ -79,9 +83,19 @@ ipcMain.on('max',()=>{
   win.maximize();
   win.show();
 })
+ipcMain.on('clS',()=>{
+  child.close();
+})
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
+// const dragicon = path.join(__dirname, 'favicon.ico');
+ipcMain.on('ondragstart', (event, filePath) => {
+  event.sender.startDrag({
+    file: filePath,
+    icon: `${__dirname}/assets/dragicon.png`
+  })
+})
 app.on('ready',()=>{
     createWindow();
     globalShortcut.register('CommandOrControl+Shift+N', () => {

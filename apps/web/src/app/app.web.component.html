@@ -14,6 +14,7 @@
   <mat-drawer class="drawer-panpel" mode="side" opened>
     <p><a routerLink="/"><button mat-button>首页</button></a></p>
     <p><a routerLink="/details"><button mat-button>详细信息</button></a></p>
+    <p><button mat-button (click)="closedSon()">关闭子窗口</button></p>
   </mat-drawer>
   <mat-drawer-content>
     <div class="title-panpel" (dblclick)="bigger()"></div>

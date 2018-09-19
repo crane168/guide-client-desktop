@@ -14,6 +14,7 @@ import { MatBottomSheet } from '@angular/material';
 import { DialogComponent } from '../dialog/dialog.web.component';
 import { ActivatedRoute } from '@angular/router';
 import { ElectronService } from 'ngx-electron';
+// const path = (<any>window).require("path");
 @Component({
   selector: 'guide-client-details',
   templateUrl: './details.web.component.html',
@@ -56,6 +57,7 @@ export class DetailsComponent implements OnInit {
     { otherService: '团建' }
   ];
   // ipc = require('electron').ipcRenderer;
+  el:HTMLElement;
   constructor(
     iconRegistry: MatIconRegistry,
     sanitizer: DomSanitizer,
@@ -115,7 +117,12 @@ export class DetailsComponent implements OnInit {
       identityCard: ['', Validators.required],
       dateForCar: ['', Validators.required]
     });
-    //初始化electron
+    //初始化electron 拖放
+    this.el=<HTMLElement>document.getElementById('drag');
+    this.el.ondragstart=(event)=>{
+      event.preventDefault();
+      this._electronService.ipcRenderer.send('ondragstart',`${__dirname}/assets/testoffice.doc`)
+    }
   }
   //get保存变量
   get f() {
@@ -194,15 +201,6 @@ export class DetailsComponent implements OnInit {
   public sendWindow() {
     if (this._electronService.isElectronApp) {
       this._electronService.ipcRenderer.send('alert');
-      // let win = new BrowserWindow({
-      //   width: 800,
-      //   height: 600,
-      //   center: true,
-      //   resizable: false,
-      //   frame: true,
-      //   parent:win,
-      // });
-      // win.loadURL('https://github.com');
     }
   }
 }

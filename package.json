@@ -72,6 +72,7 @@
     "concurrently": "^4.0.1",
     "cross-var": "^1.1.0",
     "electron": "^2.0.9",
+    "electron-builder": "^20.28.4",
     "electron-packager": "^12.1.1",
     "electron-rebuild": "^1.8.2",
     "jasmine-core": "~2.99.1",
