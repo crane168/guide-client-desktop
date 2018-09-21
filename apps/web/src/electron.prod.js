@@ -2,21 +2,117 @@ const {
   app,
   BrowserWindow,
   ipcMain,
-  globalShortcut
+  globalShortcut,
+  dialog,
+  Menu,
+  MenuItem,
+  shell,
+  Tray,
+  nativeImage
 } = require('electron');
 const path = require('path');
 const url = require('url');
+
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
+//应用程序菜单模板
+const template = [
+  {
+    label: '操作',
+    submenu: [{
+        label: '复制',
+        accelerator: 'CmdOrCtrl+C',
+        role: 'copy'
+    }, {
+        label: '粘贴',
+        accelerator: 'CmdOrCtrl+V',
+        role: 'paste'
+    }, {
+        label: '重新加载',
+        accelerator: 'CmdOrCtrl+R',
+        click: function (item, focusedWindow) {
+            if (focusedWindow) {
+                // on reload, start fresh and close any old
+                // open secondary windows
+                if (focusedWindow.id === 1) {
+                    BrowserWindow.getAllWindows().forEach(function (win) {
+                        if (win.id > 1) {
+                            win.close()
+                        }
+                    })
+                }
+                focusedWindow.reload()
+            }
+        }
+    }]
+  },
+  {
+    label: '加载网页',
+    submenu: [
+      {
+        label: '电科院',
+        accelerator: 'CmdOrCtrl+P',
+        click: () => { console.log('time to print stuff') }
+      },
+      {
+        type: 'separator'
+      },
+      {
+        label: '一起嗨',
+      }
+    ]
+  }
+]
+//如果系统是mac系统
+if (process.platform === 'darwin') {
+  const name = app.getName()
+  template.unshift({
+    label: name,
+    submenu: [{
+      label: `关于 ${name}`,
+      role: 'about'
+    }, {
+      type: 'separator'
+    }, {
+      label: '服务',
+      role: 'services',
+      submenu: []
+    }, {
+      type: 'separator'
+    }, {
+      label: `隐藏 ${name}`,
+      accelerator: 'Command+H',
+      role: 'hide'
+    }, {
+      label: '隐藏其它',
+      accelerator: 'Command+Alt+H',
+      role: 'hideothers'
+    }, {
+      label: '显示全部',
+      role: 'unhide'
+    }, {
+      type: 'separator'
+    }, {
+      label: '退出',
+      accelerator: 'Command+Q',
+      click: function () {
+        app.quit()
+      }
+    }]
+  })
+}
+
 let win;
 let child;
+let tray;
 const createWindow = () => {
+  shell.beep()
   // Create the browser window.
   win = new BrowserWindow({
-    width: 800,
+    width: 1120,
     height: 600,
-    maxwidth:1200,
-    maxheight:1000,
+    maxwidth:1300,
+    minWidth:800,
     resizable:true,
     icon: path.join(__dirname, 'favicon.ico'),
     titleBarStyle: 'hidden',
@@ -25,7 +121,6 @@ const createWindow = () => {
     show: false
     // titleBarStyle: 'hiddenInset'
     // titleBarStyle: 'customButtonsOnHover',
-    // transparent: true,
     // frame: false
   });
   //  open devTools
@@ -46,22 +141,27 @@ const createWindow = () => {
     // when you should delete the corresponding element.
     win = null;
   });
+  const menu = Menu.buildFromTemplate(template);
+
+  Menu.setApplicationMenu(menu);
+
+ //系统托盘图标
+ const iconPath = path.join(__dirname,'favsmall.png')
+ const nimage = nativeImage.createFromPath(iconPath);
+  tray = new Tray(nimage);
+
+  const contextMenu = Menu.buildFromTemplate([
+    {label: '显示', type: 'radio', click: () => {win.show()}},
+    {label: '隐藏', type: 'radio', click: () => {win.hide()}},
+  ])
+  tray.on('click', () => {
+    win.isVisible() ? win.hide() : win.show()
+  })
+
+  tray.setToolTip('这是文控云程序.') // 鼠标放上时候的提示
+  tray.setContextMenu(contextMenu)
 }
-//ipcMain进程
-// ipcMain.on('alert', () => {
-//   newWin = new BrowserWindow({
-//     width: 600,
-//     height: 400,
-//     // frame: false,
-//     // parent: win,
-//     // modal: true
-//   })
-//   // win = null;
-//   newWin.loadURL("http://github.com")
-//   // newWin.on('closed', () => {
-//   //   newWin = null;
-//   // })
-// })
+
 ipcMain.on('alert', () => {
    child = new BrowserWindow({
     width: 600,
@@ -100,6 +200,12 @@ app.on('ready',()=>{
     createWindow();
     globalShortcut.register('CommandOrControl+Shift+N', () => {
       createWindow();
+    })
+    globalShortcut.register('CmdOrCtrl+1',()=>{
+      dialog.showMessageBox({
+        type:'info',
+        message:'你按下了全局的快捷键'
+      })
     })
   }
 );
