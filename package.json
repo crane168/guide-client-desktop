@@ -1,9 +1,10 @@
 {
   "name": "guide-client",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "prh",
   "license": "MIT",
-  "main":"dist/apps/web/electron.prod.js",
+  "description": "an project for angular6 with angular6",
+  "main": "dist/apps/web/electron.prod.js",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --port 4222 --o",
@@ -50,40 +51,46 @@
     "@ngrx/router-store": "6.0.1",
     "@ngrx/store": "6.0.1",
     "@nrwl/nx": "6.2.0",
-    "bootstrap": "^4.1.3",
     "core-js": "^2.5.4",
     "electron-drag": "^1.2.2",
+    "electron-updater": "^3.1.2",
     "hammerjs": "^2.0.8",
     "ngx-chips": "^1.9.6",
     "ngx-electron": "^1.0.4",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"
   },
-  "build":{
-    "appId":"com.electron.app",
-    "productName":"guide-client",
-    "files":[
+  "build": {
+    "appId": "com.electron.app",
+    "publish": [
+      {
+        "provider": "generic",
+        "url": "http://127.0.0.1:8090/"
+      }
+    ],
+    "productName": "guide-client",
+    "files": [
       "dist/apps/web"
     ],
-    "directories":{
-      "buildResources":"build",
-      "output":"builder"
+    "directories": {
+      "buildResources": "build",
+      "output": "builder"
     },
-    "mac":{
-      "category":"public.app-category.developer-tools",
-      "target":[
+    "mac": {
+      "category": "public.app-category.developer-tools",
+      "target": [
         "dmg",
         "zip"
       ],
-      "icon":"build/favicon.icns"
+      "icon": "build/favicon.icns"
     },
-    "dmg":{
-      "background":"build/background.jpeg",
-      "title":"guide-client",
-      "icon":"build/favicon.icns"
+    "dmg": {
+      "backgroundColor": "skyblue",
+      "title": "guide-client",
+      "icon": "build/favicon.icns"
     },
-    "win":{
-      "target":[
+    "win": {
+      "target": [
         "nsis",
         "zip"
       ]
@@ -106,7 +113,6 @@
     "electron": "^2.0.9",
     "electron-builder": "^20.28.4",
     "electron-packager": "^12.1.1",
-    "electron-rebuild": "^1.8.2",
     "jasmine-core": "~2.99.1",
     "jasmine-marbles": "0.3.1",
     "jasmine-spec-reporter": "~4.2.1",

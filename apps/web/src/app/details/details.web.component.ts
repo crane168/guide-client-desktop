@@ -154,6 +154,17 @@ export class DetailsComponent implements OnInit {
     }
     //初始化onlyoffice文档实例化对象
     // const docEditor = new DocsAPI.DocEditor('placeholder',this.config)
+    //自动更新服务
+    this._electronService.ipcRenderer.on('message', (event, {message,data }) => {
+      // let li = document.createElement('li')
+      // li.innerHTML = message + " <br>data:" + JSON.stringify(data) +"<hr>";
+      // ul.appendChild(li)
+      if (message === 'isUpdateNow') {
+        if (confirm('是否现在更新？')) {
+            this._electronService.ipcRenderer.send('updateNow');
+        }
+      }
+    })
   }
   //get保存变量
   get f() {
@@ -234,6 +245,11 @@ export class DetailsComponent implements OnInit {
       this._electronService.ipcRenderer.send('alert');
     }
   }
+  //自动更新服务
+  public sendUpdate(){
+    this._electronService.ipcRenderer.send('update');
+  }
+
 }
 //接口类
 export interface Celan {

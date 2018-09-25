@@ -12,7 +12,8 @@ const {
 } = require('electron');
 const path = require('path');
 const url = require('url');
-
+const { autoUpdater } =require('electron-updater');
+const feedURL=`http://127.0.0.1:8090`;
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 //应用程序菜单模板
@@ -226,6 +227,42 @@ app.on('activate', () => {
     createWindow();
   }
 });
+// 监听自定义update事件
+ipcMain.on('update', (e, arg) => {
+  checkForUpdate()
+})
 
+const checkForUpdate = () => {
+  // 设置检查更新的 url，并且初始化自动更新
+  autoUpdater.setFeedURL(feedURL)
+
+ // 监听错误
+  autoUpdater.on('error', message => {
+    sendUpdateMessage('err', message)
+  })
+ // 当开始检查更新的时候触发
+  autoUpdater.on('checking-for-update', message => {
+    sendUpdateMessage('checking-for-update', message);
+  })
+ //
+  autoUpdater.on('download-progress', function(progressObj) {
+    sendUpdateMessage('downloadProgress', progressObj);
+  });
+  // 更新下载完成事件
+  autoUpdater.on('update-downloaded', function(event, releaseNotes, releaseName, releaseDate, updateUrl, quitAndUpdate) {
+
+      ipcMain.on('updateNow', (e, arg) => {
+          autoUpdater.quitAndInstall();
+      });
+      sendUpdateMessage('isUpdateNow');
+  });
+ // 向服务端查询现在是否有可用的更新
+  autoUpdater.checkForUpdates();
+}
+
+// 发送消息触发message事件
+function sendUpdateMessage(message, data) {
+  win.webContents.send('message', { message, data });
+}
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
