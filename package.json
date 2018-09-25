@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "author": "prh",
   "license": "MIT",
+  "main":"dist/apps/web/electron.prod.js",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --port 4222 --o",
@@ -15,6 +16,7 @@
     "package:linux": "npm run build && cross-var electron-packager dist/apps/web $npm_package_name-$npm_package_version --out=packages --platform=linux --arch=all --overwrite --icon=./favicon.png",
     "package:osx": "npm run build && cross-var electron-packager dist/apps/web $npm_package_name-$npm_package_version --out=packages --platform=darwin --arch=all --overwrite --ignore=node_modules/electron-* --ignore=node_modules/.bin --icon=./favicon.icns",
     "package:all": "npm run build && cross-var electron-packager dist/apps/web $npm_package_name-$npm_package_version --out=packages --all --arch=all --overwrite --ignore=node_modules/electron-* --ignore=node_modules/.bin *--icon=./favicon*",
+    "builder:osx": "electron-builder",
     "pack": "asar pack packages/guide-client-1.0.0-win32-ia32/resources/app packages/guide-client-1.0.0-win32-ia32/resources/app.asar && rm -rf packages/guide-client-1.0.0-win32-ia32/resources/app",
     "affected:apps": "./node_modules/.bin/nx affected:apps",
     "affected:libs": "./node_modules/.bin/nx affected:libs",
@@ -56,6 +58,36 @@
     "ngx-electron": "^1.0.4",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"
+  },
+  "build":{
+    "appId":"com.electron.app",
+    "productName":"guide-client",
+    "files":[
+      "dist/apps/web"
+    ],
+    "directories":{
+      "buildResources":"build",
+      "output":"builder"
+    },
+    "mac":{
+      "category":"public.app-category.developer-tools",
+      "target":[
+        "dmg",
+        "zip"
+      ],
+      "icon":"build/favicon.icns"
+    },
+    "dmg":{
+      "background":"build/background.jpeg",
+      "title":"guide-client",
+      "icon":"build/favicon.icns"
+    },
+    "win":{
+      "target":[
+        "nsis",
+        "zip"
+      ]
+    }
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.6.1",

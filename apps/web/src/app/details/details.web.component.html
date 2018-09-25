@@ -8,6 +8,11 @@
         </div>
         <mat-icon svgIcon="{{item.shanchu}}" (click)="deleteItem(i)" class="icons"></mat-icon>
       </mat-list-item>
+      <mat-list-item>
+        <div id="placeholder">
+
+        </div>
+      </mat-list-item>
     </mat-nav-list>
   </div>
   <div class="right">
@@ -93,4 +98,8 @@
   <div class="primary-container">
     <guide-client-table [user]="user"></guide-client-table>
     <div><img src='./assets/officeicon.png' id="drag"><p>拖拽上边文档到桌面</p></div>
+    <hr>
+    <div id="holder">
+      拖拽你的文件到这里！
+    </div>
 </div>

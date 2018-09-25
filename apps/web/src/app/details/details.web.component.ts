@@ -58,6 +58,20 @@ export class DetailsComponent implements OnInit {
   ];
   // ipc = require('electron').ipcRenderer;
   el:HTMLElement;
+  config = {
+    "document":{
+        "fileType":"docx",
+        "key" : "Khirz6zTPdfd7",
+        "title":"Example Document Title.docx",
+        "url":"assets/testoffice.doc"
+   },
+   "documentType":"text",
+    // "editorConfig":{
+    //     "callbackUrl":"https://example.com/url-to-callback.ashx",
+    //   },
+      "height":"100%",
+      "width":"100%"
+};
   constructor(
     iconRegistry: MatIconRegistry,
     sanitizer: DomSanitizer,
@@ -123,6 +137,23 @@ export class DetailsComponent implements OnInit {
       event.preventDefault();
       this._electronService.ipcRenderer.send('ondragstart',`${__dirname}/assets/testoffice.doc`)
     }
+    //处理拖拽文件到electron系统
+    const holder= <HTMLElement>document.getElementById('holder');
+    holder.ondragover=()=>{
+      return false;
+    }
+    holder.ondragleave = holder.ondragend=() =>{
+      return false;
+    }
+    holder.ondrop=(e:any) => {
+      e.preventDefault();
+      for ( let f of e.dataTransfer.files) {
+        alert('你拖拽的文件路径为：' + f.path);
+      }
+      return false;
+    }
+    //初始化onlyoffice文档实例化对象
+    // const docEditor = new DocsAPI.DocEditor('placeholder',this.config)
   }
   //get保存变量
   get f() {
