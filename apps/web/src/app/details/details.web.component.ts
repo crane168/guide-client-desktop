@@ -248,6 +248,7 @@ export class DetailsComponent implements OnInit {
   //自动更新服务
   public sendUpdate(){
     this._electronService.ipcRenderer.send('update');
+    console.log("更新")
   }
 
 }
