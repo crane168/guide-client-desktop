@@ -1,6 +1,6 @@
 {
   "name": "guide-client",
-  "version": "1.1.0",
+  "version": "1.0.0",
   "author": "prh",
   "license": "MIT",
   "description": "an project for angular6 with angular6",
@@ -17,7 +17,8 @@
     "package:linux": "npm run build && cross-var electron-packager dist/apps/web $npm_package_name-$npm_package_version --out=packages --platform=linux --arch=all --overwrite --icon=./favicon.png",
     "package:osx": "npm run build && cross-var electron-packager dist/apps/web $npm_package_name-$npm_package_version --out=packages --platform=darwin --arch=all --overwrite --ignore=node_modules/electron-* --ignore=node_modules/.bin --icon=./favicon.icns",
     "package:all": "npm run build && cross-var electron-packager dist/apps/web $npm_package_name-$npm_package_version --out=packages --all --arch=all --overwrite --ignore=node_modules/electron-* --ignore=node_modules/.bin *--icon=./favicon*",
-    "builder:osx": "electron-builder -m -w --ia32",
+    "builder:osx": "npm run build && electron-builder -m",
+    "builder:win": "npm run build && electron-builder -w --ia32",
     "pack": "asar pack packages/guide-client-1.0.0-win32-ia32/resources/app packages/guide-client-1.0.0-win32-ia32/resources/app.asar && rm -rf packages/guide-client-1.0.0-win32-ia32/resources/app",
     "affected:apps": "./node_modules/.bin/nx affected:apps",
     "affected:libs": "./node_modules/.bin/nx affected:libs",
@@ -62,12 +63,6 @@
   },
   "build": {
     "appId": "com.electron.app",
-    "publish": [
-      {
-        "provider": "generic",
-        "url": "http://127.0.0.1:8090/"
-      }
-    ],
     "productName": "guide-client",
     "files": [
       "dist/apps/web"
@@ -81,17 +76,29 @@
       "target": [
         "dmg",
         "zip"
+      ],
+      "publish": [
+        {
+          "provider": "generic",
+          "url": "http://192.168.2.206:8090/mac"
+        }
       ]
     },
     "dmg": {
       "backgroundColor": "skyblue",
       "title": "guide-client",
-      "icon": "build/favicon.icns"
+      "icon":"build/icon.icns"
     },
     "win": {
       "target": [
         "nsis",
         "zip"
+      ],
+      "publish": [
+        {
+          "provider": "generic",
+          "url": "http://192.168.2.206:8090/win"
+        }
       ]
     }
   },

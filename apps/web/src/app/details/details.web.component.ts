@@ -152,13 +152,15 @@ export class DetailsComponent implements OnInit {
       }
       return false;
     }
+    //监听electron autoupdate参数变化
+    const ul=<HTMLElement>document.querySelector('ul');
     //初始化onlyoffice文档实例化对象
     // const docEditor = new DocsAPI.DocEditor('placeholder',this.config)
     //自动更新服务
     this._electronService.ipcRenderer.on('message', (event, {message,data }) => {
-      // let li = document.createElement('li')
-      // li.innerHTML = message + " <br>data:" + JSON.stringify(data) +"<hr>";
-      // ul.appendChild(li)
+      let li = document.createElement('li')
+      li.innerHTML = message + " <br>data:" + JSON.stringify(data) +"<hr>";
+      ul.appendChild(li);
       if (message === 'isUpdateNow') {
         if (confirm('是否现在更新？')) {
             this._electronService.ipcRenderer.send('updateNow');

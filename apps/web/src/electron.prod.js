@@ -13,7 +13,9 @@ const {
 const path = require('path');
 const url = require('url');
 const { autoUpdater } =require('electron-updater');
-const feedURL=`http://127.0.0.1:8090`;
+
+ feedURL=`http://127.0.0.1:8090`;
+
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 //应用程序菜单模板
@@ -125,7 +127,7 @@ const createWindow = () => {
     // frame: false
   });
   //  open devTools
-  win.webContents.openDevTools();
+  // win.webContents.openDevTools();
   // and load the index.html of the app.
 
   win.loadURL(url.format({
@@ -234,6 +236,9 @@ ipcMain.on('update', (e, arg) => {
 
 const checkForUpdate = () => {
   // 设置检查更新的 url，并且初始化自动更新
+  if (process.platform === 'darwin'){
+    feedURL= `http://192.168.2.206:8090/mac`;
+  }
   autoUpdater.setFeedURL(feedURL)
 
  // 监听错误
@@ -251,10 +256,10 @@ const checkForUpdate = () => {
   // 更新下载完成事件
   autoUpdater.on('update-downloaded', function(event, releaseNotes, releaseName, releaseDate, updateUrl, quitAndUpdate) {
 
+    sendUpdateMessage('isUpdateNow');
       ipcMain.on('updateNow', (e, arg) => {
           autoUpdater.quitAndInstall();
       });
-      sendUpdateMessage('isUpdateNow');
   });
  // 向服务端查询现在是否有可用的更新
   autoUpdater.checkForUpdates();
