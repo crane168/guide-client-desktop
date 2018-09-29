@@ -8,11 +8,19 @@
         </div>
         <mat-icon svgIcon="{{item.shanchu}}" (click)="deleteItem(i)" class="icons"></mat-icon>
       </mat-list-item>
-      <mat-list-item>
+      <!-- <mat-list-item> -->
         <div id="placeholder">
-            <ul></ul>
+          <a href="http://192.168.2.62:3000/editor?type=desktop&fileName={{docurl}}" target="_blank">
+            <img src="assets/icons/doc.png" style="width:20px;height:20px;" alt="Open in viewer for full size screens" title="Open in viewer for full size screens" />
+          </a>
+          <a href="http://192.168.2.62:3000/editor?type=desktop&fileName={{docurl}}" target="_blank" style="font-size:12px;text-decoration:underline;">
+            点我编辑.doc
+          </a>
+          <a href="http://192.168.2.62:3000/download?fileName=wky-prod.docx">
+            <img  src="assets/icons/download.png" style="width:20px;height:20px;" alt="Download" title="Download"/>
+          </a>
         </div>
-      </mat-list-item>
+      <!-- </mat-list-item> -->
     </mat-nav-list>
   </div>
   <div class="right">
@@ -101,6 +109,6 @@
     <div><img src='./assets/officeicon.png' id="drag"><p>拖拽上边文档到桌面</p></div>
     <hr>
     <div id="holder">
-      拖拽你的文件到这里！
+      当前版本为v1.1.0拖拽你的文件到这里！
     </div>
 </div>

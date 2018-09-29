@@ -169,8 +169,6 @@ ipcMain.on('alert', () => {
    child = new BrowserWindow({
     width: 600,
     height: 400,
-    parent: win,
-    modal: true,
     show: false
   })
   child.loadURL(url.format({

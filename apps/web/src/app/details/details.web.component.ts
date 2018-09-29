@@ -58,6 +58,7 @@ export class DetailsComponent implements OnInit {
   ];
   // ipc = require('electron').ipcRenderer;
   el:HTMLElement;
+  docurl:string;
   config = {
     "document":{
         "fileType":"docx",
@@ -106,6 +107,7 @@ export class DetailsComponent implements OnInit {
       'laji',
       sanitizer.bypassSecurityTrustResourceUrl('assets/icons/laji.svg')
     );
+    this.docurl = encodeURIComponent('文控云产品流程服务接口说明20180727.docx');
   }
   ngOnInit() {
     //获取query中name参数

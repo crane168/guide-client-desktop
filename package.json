@@ -1,6 +1,6 @@
 {
   "name": "guide-client",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "prh",
   "license": "MIT",
   "description": "an project for angular6 with angular6",
@@ -77,6 +77,7 @@
         "dmg",
         "zip"
       ],
+      "artifactName": "${productName}_setup_${version}.${ext}",
       "publish": [
         {
           "provider": "generic",
@@ -87,13 +88,30 @@
     "dmg": {
       "backgroundColor": "skyblue",
       "title": "guide-client",
-      "icon":"build/icon.icns"
+      "icon":"build/icon.icns",
+      "contents": [
+        {
+          "x": 410,
+          "y": 150,
+          "type": "link",
+          "path": "/Applications"
+        },
+        {
+          "x": 130,
+          "y": 150,
+          "type": "file"
+        }
+      ]
     },
+    "nsis":{
+      "createDesktopShortcut": true
+      },
     "win": {
       "target": [
         "nsis",
         "zip"
       ],
+      "artifactName": "${productName}_setup_${version}.${ext}",
       "publish": [
         {
           "provider": "generic",
