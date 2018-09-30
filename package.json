@@ -1,6 +1,6 @@
 {
   "name": "guide-client",
-  "version": "1.1.0",
+  "version": "1.0.0",
   "author": "prh",
   "license": "MIT",
   "description": "an project for angular6 with angular6",
@@ -8,7 +8,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --port 4222 --o",
-    "electron:web": "electron ./apps/web/src/electron.dev",
+    "electron:web": "electron .",
     "build": "ng build",
     "test": "ng test",
     "lint": "./node_modules/.bin/nx lint && ng lint",
@@ -64,6 +64,7 @@
   "build": {
     "appId": "com.electron.app",
     "productName": "guide-client",
+    "asar":false,
     "files": [
       "dist/apps/web"
     ],

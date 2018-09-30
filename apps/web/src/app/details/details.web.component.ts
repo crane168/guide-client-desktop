@@ -134,11 +134,13 @@ export class DetailsComponent implements OnInit {
       dateForCar: ['', Validators.required]
     });
     //初始化electron 拖放
-    this.el=<HTMLElement>document.getElementById('drag');
-    this.el.ondragstart=(event)=>{
+    this.el = <HTMLElement>document.getElementById('drag');
+    this.el.addEventListener('dragstart',(event)=>{
+      event.dataTransfer.dropEffect = 'copy'
+      console.log("拖拽开始")
       event.preventDefault();
       this._electronService.ipcRenderer.send('ondragstart',`${__dirname}/assets/testoffice.doc`)
-    }
+    })
     //处理拖拽文件到electron系统
     const holder= <HTMLElement>document.getElementById('holder');
     holder.ondragover=()=>{
