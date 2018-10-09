@@ -3032,9 +3032,9 @@ electron-to-chromium@^1.3.47:
   version "1.3.58"
   resolved "http://registry.npm.taobao.org/electron-to-chromium/download/electron-to-chromium-1.3.58.tgz#8267a4000014e93986d9d18c65a8b4022ca75188"
 
-electron-updater@^3.1.2:
-  version "3.1.2"
-  resolved "http://registry.npm.taobao.org/electron-updater/download/electron-updater-3.1.2.tgz#30d9790d5b16048e4afc74a31748790348b153bf"
+electron-updater@3.0.3:
+  version "3.0.3"
+  resolved "http://registry.npm.taobao.org/electron-updater/download/electron-updater-3.0.3.tgz#67f7edd578d260f9351ccd46ff23c2789c2a5a4f"
   dependencies:
     bluebird-lst "^1.0.5"
     builder-util-runtime "~4.4.1"
@@ -3043,8 +3043,8 @@ electron-updater@^3.1.2:
     js-yaml "^3.12.0"
     lazy-val "^1.0.3"
     lodash.isequal "^4.5.0"
-    semver "^5.5.1"
-    source-map-support "^0.5.9"
+    semver "^5.5.0"
+    source-map-support "^0.5.6"
 
 electron@^2.0.9:
   version "2.0.9"
@@ -7669,7 +7669,7 @@ source-map-support@^0.5.0, source-map-support@^0.5.3, source-map-support@^0.5.5:
     buffer-from "^1.0.0"
     source-map "^0.6.0"
 
-source-map-support@^0.5.9:
+source-map-support@^0.5.6, source-map-support@^0.5.9:
   version "0.5.9"
   resolved "http://registry.npm.taobao.org/source-map-support/download/source-map-support-0.5.9.tgz#41bc953b2534267ea2d605bccfa7bfa3111ced5f"
   dependencies:

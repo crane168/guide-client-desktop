@@ -1,6 +1,6 @@
 {
   "name": "guide-client",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "author": "prh",
   "license": "MIT",
   "description": "an project for angular6 with angular6",
@@ -15,8 +15,8 @@
     "e2e": "ng e2e",
     "package:win": "npm run build && cross-var electron-packager dist/apps/web $npm_package_name-$npm_package_version --out=packages --platform=win32 --arch=all --overwrite",
     "package:linux": "npm run build && cross-var electron-packager dist/apps/web $npm_package_name-$npm_package_version --out=packages --platform=linux --arch=all --overwrite --icon=./favicon.png",
-    "package:osx": "npm run build && cross-var electron-packager dist/apps/web $npm_package_name-$npm_package_version --out=packages --platform=darwin --arch=all --overwrite --ignore=node_modules/electron-* --ignore=node_modules/.bin --icon=./favicon.icns",
-    "package:all": "npm run build && cross-var electron-packager dist/apps/web $npm_package_name-$npm_package_version --out=packages --all --arch=all --overwrite --ignore=node_modules/electron-* --ignore=node_modules/.bin *--icon=./favicon*",
+    "package:osx": "npm run build && cross-var electron-packager dist/apps/web $npm_package_name-$npm_package_version --out=packages --platform=darwin --arch=all --overwrite  --icon=./favicon.icns",
+    "package:all": "npm run build && cross-var electron-packager dist/apps/web $npm_package_name-$npm_package_version --out=packages --all --arch=all --overwrite  *--icon=./favicon*",
     "builder:osx": "npm run build && electron-builder -m",
     "builder:win": "npm run build && electron-builder -w --ia32",
     "pack": "asar pack packages/guide-client-1.0.0-win32-ia32/resources/app packages/guide-client-1.0.0-win32-ia32/resources/app.asar && rm -rf packages/guide-client-1.0.0-win32-ia32/resources/app",
@@ -54,7 +54,7 @@
     "@nrwl/nx": "6.2.0",
     "core-js": "^2.5.4",
     "electron-drag": "^1.2.2",
-    "electron-updater": "^3.1.2",
+    "electron-updater": "3.0.3",
     "hammerjs": "^2.0.8",
     "ngx-chips": "^1.9.6",
     "ngx-electron": "^1.0.4",
@@ -64,13 +64,13 @@
   "build": {
     "appId": "com.electron.app",
     "productName": "guide-client",
-    "asar":false,
+    "asar": false,
     "files": [
       "dist/apps/web"
     ],
     "directories": {
       "buildResources": "build",
-      "output": "builder"
+      "output": "builder/win"
     },
     "mac": {
       "category": "public.app-category.developer-tools",
@@ -89,7 +89,7 @@
     "dmg": {
       "backgroundColor": "skyblue",
       "title": "guide-client",
-      "icon":"build/icon.icns",
+      "icon": "build/icon.icns",
       "contents": [
         {
           "x": 410,
@@ -104,9 +104,9 @@
         }
       ]
     },
-    "nsis":{
+    "nsis": {
       "createDesktopShortcut": true
-      },
+    },
     "win": {
       "target": [
         "nsis",

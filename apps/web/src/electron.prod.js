@@ -14,7 +14,7 @@ const path = require('path');
 const url = require('url');
 const { autoUpdater } =require('electron-updater');
 
- var  feedURL=`http://127.0.0.1:8090/win`;
+ var  feedURL=`http://192.168.2.206:8090/win`;
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -104,14 +104,14 @@ if (process.platform === 'darwin') {
     }]
   })
 }
-const message= {
-  error:'检查更新出错',
-  checking:'正在检查更新……',
-  updateAva:'发现新版本，是否立刻下载？',
-  updateDownload:'正在下载……',
-  updateNotAva:'现在使用的就是最新版本，不用更新',
-  updateEnd:'更新下载完毕，点击确定重启并安装',
-}
+// const message= {
+//   error:'检查更新出错',
+//   checking:'正在检查更新……',
+//   updateAva:'发现新版本，是否立刻下载？',
+//   updateDownload:'正在下载……',
+//   updateNotAva:'现在使用的就是最新版本，不用更新',
+//   updateEnd:'更新下载完毕，点击确定重启并安装',
+// }
 let win;
 let child;
 let tray;
@@ -134,7 +134,7 @@ const createWindow = () => {
     // frame: false
   });
   //  open devTools
-  win.webContents.openDevTools();
+  // win.webContents.openDevTools();
   // and load the index.html of the app.
 
   win.loadURL(url.format({
@@ -176,7 +176,8 @@ ipcMain.on('alert', () => {
    child = new BrowserWindow({
     width: 600,
     height: 400,
-    show: false
+    show: false,
+    titleBarStyle: 'hidden'
   })
   child.loadURL(url.format({
     pathname:"localhost:4222/detail",
@@ -262,10 +263,10 @@ const checkForUpdate = () => {
   });
   // 更新下载完成事件
   autoUpdater.on('update-downloaded', function(event, releaseNotes, releaseName, releaseDate, updateUrl, quitAndUpdate) {
+    sendUpdateMessage('isUpdateNow');
     ipcMain.on('updateNow', (e, arg) => {
       autoUpdater.quitAndInstall();
   });
-    sendUpdateMessage('isUpdateNow');
 })
  // 向服务端查询现在是否有可用的更新
    autoUpdater.checkForUpdates();
